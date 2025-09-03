@@ -1,42 +1,44 @@
 package com.etec.escola.Controller;
 
-import com.etec.escola.Models.Aluno;
-import com.etec.escola.Service.AlunoService;
+
+import com.etec.escola.Models.Professor;
+import com.etec.escola.Service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping/*<- requisição de rota*/("/aluno") // finir uma rota
-public class AlunoController {
+@RequestMapping/*<- requisição de rota*/("/professor") // finir uma rota
+public class ProfessorController {
 
-    private final AlunoService alunoService;
+    private final ProfessorService professorService;
 
-    public AlunoController(AlunoService alunoService) {
-        this.alunoService = alunoService;
+    public ProfessorController(ProfessorService professorService) {
+        this.professorService = professorService;
     }
 
-    //alistar o aluno:
+
+    //alistar o professor:
     @GetMapping
-    public List<Aluno> ListadeAlunos(){
-        return alunoService.buscarAluno();
+    public List<Professor> ListadeProfessor(){
+        return professorService.buscarProfessor();
     }
 
-    //salvar o aluno:
+    //salvar o professor:
     @PostMapping // inserir
-    public Aluno salvarnovoAluno(@RequestBody Aluno dadosAlunos){
-        return alunoService.salvarAluno(dadosAlunos);
+    public Professor salvarnovoProfessor(@RequestBody Professor dadosProfessor){
+        return professorService.salvarProfessor(dadosProfessor);
     }
 
-    //buscar o aluno
+    //buscar o professor:
     @GetMapping("/{id}")
-    public Aluno buscarAlunos (@PathVariable/*<- se estiver usando ID*/ Long id){
-        return alunoService.buscarAlunoId(id);
+    public Professor buscarProfessor (@PathVariable/*<- se estiver usando ID*/ Long id){
+        return professorService.buscarProfessorId(id);
     }
 
-    //deletar o aluno
+    //deletar o professor:
     @DeleteMapping("/{id}")
-    public void excluirAluno (@PathVariable Long id){
-        alunoService.deletarAluno(id);
+    public void excluirProfessor (@PathVariable Long id){
+        professorService.deletarProfessor(id);
     }
 }

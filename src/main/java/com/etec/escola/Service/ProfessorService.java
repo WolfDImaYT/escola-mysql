@@ -1,36 +1,38 @@
 package com.etec.escola.Service;
 
-import com.etec.escola.Interface.AlunoRepository;
-import com.etec.escola.Models.Aluno;
+
+import com.etec.escola.Interface.ProfessorRepository;
+import com.etec.escola.Models.Professor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 
-public class AlunoService {
+public class ProfessorService {
 
-    private final AlunoRepository alunoRepository; // nivel desegurança final, imutavel
+    private final ProfessorRepository professorRepository;// nivel desegurança final, imutavel
+
+    public ProfessorService(ProfessorRepository professorRepository) {
+        this.professorRepository = professorRepository;
+    }
     /*ta recebendo o valor do Alunorepository*/
 
-    public AlunoService(AlunoRepository alunoRepository) {
-        this.alunoRepository = alunoRepository;
-    }
 
-    public List<Aluno> buscarAluno(){
-        return alunoRepository.findAll();
-    } // listar aluno
+    public List<Professor> buscarProfessor(){
+        return professorRepository.findAll();
+    } // listar professor
 
-    public Aluno salvarAluno(Aluno Aluno){
-        return alunoRepository.save(Aluno);
-    }// salvar aluno. o aluno(com "a" menor) ta salvando na memoria em tempo real
+    public Professor salvarProfessor(Professor professor){
+        return professorRepository.save(professor);
+    }// salvar professor. o professor(com "p" menor) ta salvando na memoria em tempo real
 
-    public Aluno buscarAlunoId(Long id){
-        return alunoRepository.findById(id).orElse(null);
-    }
+    public Professor buscarProfessorId(Long id){
+        return professorRepository.findById(id).orElse(null);
+    }// busca professor
 
-    public void deletarAluno (Long id){
-       alunoRepository.deleteById(id);
-    }
+    public void deletarProfessor (Long id){
+       professorRepository.deleteById(id);
+    }// deleta professor
 }
 

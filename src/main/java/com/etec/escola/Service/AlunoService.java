@@ -10,7 +10,8 @@ import java.util.List;
 
 public class AlunoService {
 
-    private final AlunoRepository alunoRepository;
+    private final AlunoRepository alunoRepository; // nivel desegurança final, imutavel
+    /*ta recebendo o valor do Alunorepository*/
 
     public AlunoService(AlunoRepository alunoRepository) {
         this.alunoRepository = alunoRepository;
@@ -18,17 +19,18 @@ public class AlunoService {
 
     public List<Aluno> buscarAluno(){
         return alunoRepository.findAll();
-    }
+    } // listar aluno
 
     public Aluno salvarAluno(Aluno Aluno){
         return alunoRepository.save(Aluno);
-    }
+    }// salvar aluno. o aluno(com "a" menor) ta salvando na memoria em tempo real
+
     public Aluno buscarAlunoId(Long id){
         return alunoRepository.findById(id).orElse(null);
-    }
+    } //busca aluno
 
     public void deletarAluno (Long id){
        alunoRepository.deleteById(id);
-    }
+    } // deleta aluno
 }
 

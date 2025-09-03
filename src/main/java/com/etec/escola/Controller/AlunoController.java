@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/aluno") // finir uma rota
+@RequestMapping/*<- requisição de rota*/("/aluno") // finir uma rota
 public class AlunoController {
 
     private final AlunoService alunoService;
@@ -28,14 +28,13 @@ public class AlunoController {
         return alunoService.salvarAluno(dadosAlunos);
     }
 
-    //buscar o aluno
+    //buscar o aluno:
     @GetMapping("/{id}")
-    public Aluno buscarAlunos (@PathVariable Long id){
+    public Aluno buscarAlunos (@PathVariable/*<- se estiver usando ID*/ Long id){
         return alunoService.buscarAlunoId(id);
     }
 
-
-    //deletar o aluno
+    //deletar o aluno:
     @DeleteMapping("/{id}")
     public void excluirAluno (@PathVariable Long id){
         alunoService.deletarAluno(id);
