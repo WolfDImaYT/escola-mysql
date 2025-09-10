@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 @Entity // que é um entidade viva
 public class Aluno {
     @Id // é a chave primaria o ID
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto encremento
     private Long id;
 
     private String nome;
